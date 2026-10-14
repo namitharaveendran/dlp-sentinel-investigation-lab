@@ -1,44 +1,59 @@
-
-# DLP Sentinel — Investigation Lab
+# DLP Sentinel — DLP Detection & Investigation Lab
 
 [![DLP Sentinel Tests](https://github.com/namitharaveendran/dlp-sentinel-investigation-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/namitharaveendran/dlp-sentinel-investigation-lab/actions/workflows/tests.yml)
 
-## Overview
+A Python-based Data Loss Prevention (DLP) detection and investigation lab that identifies simulated sensitive-data handling risks, generates rule-based alerts, validates detection scenarios, and calculates incident review SLA results.
 
-DLP Sentinel is a Python-based cybersecurity learning project that generates synthetic Data Loss Prevention (DLP) events, applies five rule-based detection conditions, and produces alert records for investigation.
+This project demonstrates foundational skills in security monitoring, alert triage, incident investigation, detection testing, security documentation, and workflow automation.
 
-The project demonstrates foundational skills in DLP monitoring simulation, security event analysis, detection-rule validation, incident documentation, simulated SLA tracking, automated testing, and continuous integration.
+> **Project scope:** This is a learning lab using synthetic event data and illustrative incident records. It is not a production DLP deployment and does not integrate with Microsoft Purview or another enterprise DLP platform.
 
-The project uses fictional data and illustrative review targets. It is not a production DLP platform and does not connect to an enterprise DLP service.
+## Objectives
 
-## Features
+- Implement transparent, rule-based DLP detection conditions.
+- Assign alert severity based on event characteristics.
+- Test detection thresholds and approval validation.
+- Validate expected outcomes against repeatable scenarios.
+- Maintain structured incident investigation records.
+- Calculate incident review times against illustrative SLA targets.
+- Automate testing and scenario validation through GitHub Actions.
 
-- Synthetic DLP event generation
-- Five rule-based detection conditions
-- Severity-based alert generation
-- Detection of potentially risky external sharing and data transfers
-- Bulk-download threshold monitoring
-- Cloud-upload and removable-media activity checks
-- CSV-based alert and investigation records
-- Incident register with priorities, analyst actions, and escalation reasons
-- Simulated SLA calculation and review-target tracking
-- Eight executable DLP scenario validations
-- Fourteen automated unit tests
-- Markdown incident investigation report
-- GitHub Actions workflow for automated testing and scenario validation
+## Detection Rules
+
+The detection engine implements five rules:
+
+| Rule ID | Detection condition | Severity |
+|---|---|---|
+| DLP-001 | Sensitive data sent to an unapproved destination | High |
+| DLP-002 | Sensitive information shared externally | High |
+| DLP-003 | Bulk download of 100 or more files | Medium |
+| DLP-004 | Upload to an unapproved cloud destination | High for sensitive data; Medium otherwise |
+| DLP-005 | Unapproved removable-media transfer to a USB drive | Medium |
+
+A single event may trigger multiple rules. For example, a sensitive upload to an unapproved cloud destination can trigger both DLP-001 and DLP-004.
+
+These are custom Python rules designed for this lab, not native enterprise DLP policies.
+
+## Investigation Workflow
+
+1. **Event analysis:** Read the synthetic event dataset.
+2. **Detection:** Evaluate events against the five predefined rules.
+3. **Alert generation:** Record triggered rules and assigned severity.
+4. **Scenario validation:** Compare actual results with expected rules and severity.
+5. **Incident investigation:** Document initial findings and recommended actions.
+6. **SLA review:** Calculate elapsed time to first review and compare it with the configured target.
+7. **Automated testing:** Execute unit tests and scenario validations locally and through GitHub Actions.
 
 ## Technology Stack
 
-- Python 3.10
-- pandas
-- CSV datasets
-- Python `unittest`
-- Git and GitHub
-- GitHub Actions
-- PowerShell
-- Visual Studio Code
+- **Language:** Python 3.10
+- **Data processing:** pandas
+- **Testing:** Python `unittest`
+- **Version control:** Git and GitHub
+- **CI automation:** GitHub Actions
+- **Input and output:** CSV datasets and Markdown reports
 
-## Project Structure
+## Repository Structure
 
 ```text
 dlp-sentinel-investigation-lab/
@@ -48,219 +63,134 @@ dlp-sentinel-investigation-lab/
 ├── data/
 │   ├── synthetic_dlp_events.csv
 │   └── dlp_alerts.csv
+├── docs/
+│   └── enterprise-dlp-concept-mapping.md
 ├── reports/
 │   ├── investigation_log.csv
 │   ├── incident_investigation_report.md
 │   ├── incident_register.csv
 │   ├── sla_results.csv
 │   └── dlp_scenario_validation.csv
-├── generate_events.py
-├── detect_alerts.py
-├── investigate_alerts.py
 ├── calculate_sla.py
-├── validate_scenarios.py
-├── test_detect_alerts.py
-├── test_calculate_sla.py
+├── detect_alerts.py
+├── generate_events.py
+├── investigate_alerts.py
 ├── requirements.txt
+├── test_calculate_sla.py
+├── test_detect_alerts.py
+├── validate_scenarios.py
 ├── .gitignore
 └── README.md
 ```
 
-The `.venv/` directory is created locally during setup and is excluded from Git.
+The `.venv/` directory is created locally during setup and excluded from Git.
 
-## Detection Rules
+## Getting Started
 
-| Rule ID | Detection condition | Severity |
-|---|---|---|
-| DLP-001 | Confidential or Restricted data sent to an unapproved destination | High |
-| DLP-002 | External sharing involving Confidential or Restricted information | High |
-| DLP-003 | Bulk download involving at least 100 files | Medium |
-| DLP-004 | Upload to the configured `unapproved_cloud` destination | High for Confidential or Restricted data; otherwise Medium |
-| DLP-005 | Copy to a `usb_drive` destination without approval | Medium |
+### Prerequisites
 
-These custom rules identify activity requiring review. An alert does not, by itself, establish a confirmed data leak, malicious intent, or policy violation.
-
-An event can trigger multiple rules. For example, a sensitive upload to an unapproved cloud destination can trigger both DLP-001 and DLP-004.
-
-## Workflow
-
-1. Generate synthetic DLP events.
-2. Apply five detection rules.
-3. Assign severity based on configured conditions.
-4. Save alert records to CSV.
-5. Select events for initial investigation.
-6. Record priorities, analyst actions, recommendations, and dispositions.
-7. Calculate elapsed review time against illustrative SLA targets.
-8. Validate expected detection behaviour through executable scenarios.
-9. Run automated unit tests and scenario validation in GitHub Actions.
-
-## Setup
+- Python 3.10 or a compatible version
+- Git
+- PowerShell, Command Prompt, or another terminal
 
 ### 1. Clone the repository
 
-```powershell
+```bash
 git clone https://github.com/namitharaveendran/dlp-sentinel-investigation-lab.git
 cd dlp-sentinel-investigation-lab
 ```
 
 ### 2. Create and activate a virtual environment
 
+**Windows PowerShell:**
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
+**Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
 ### 3. Install dependencies
 
-```powershell
+```bash
 python -m pip install -r requirements.txt
 ```
 
-## How to Run
+### 4. Generate synthetic events
 
-Execute the scripts from the project root.
-
-### Generate synthetic events
-
-```powershell
+```bash
 python generate_events.py
 ```
 
-This generates the fictional event dataset in `data/synthetic_dlp_events.csv`.
+This generates the fictional event dataset at `data/synthetic_dlp_events.csv`.
 
-### Generate DLP alerts
+**Note:** Running the event generator again overwrites the existing synthetic dataset.
 
-```powershell
+### 5. Run the detection engine
+
+```bash
 python detect_alerts.py
 ```
 
-This applies the five detection rules and writes alert records to `data/dlp_alerts.csv`.
+The detection engine processes the synthetic events and writes alert results to `data/dlp_alerts.csv`.
 
-### Generate investigation records
+### 6. Generate investigation records
 
-```powershell
+```bash
 python investigate_alerts.py
 ```
 
-This creates initial investigation records and the investigation report according to the implemented workflow.
+This creates investigation records and the investigation report according to the implemented workflow.
 
-### Calculate simulated SLA results
+### 7. Validate detection scenarios
 
-```powershell
+```bash
+python validate_scenarios.py
+```
+
+The validator checks eight scenarios, including sensitive-data transfers, external sharing, bulk-download thresholds, cloud uploads, and removable-media transfers.
+
+Results are written to `reports/dlp_scenario_validation.csv`. A failed scenario causes the script to exit with a non-zero status.
+
+### 8. Calculate incident review SLA results
+
+```bash
 python calculate_sla.py
 ```
 
-This reads `reports/incident_register.csv`, calculates elapsed review time, compares it with the configured targets, and writes `reports/sla_results.csv`.
+The script reads `reports/incident_register.csv`, calculates elapsed review times, compares them with configured targets, and writes `reports/sla_results.csv`.
 
-### Validate DLP scenarios
+### 9. Run automated unit tests
 
-```powershell
-python validate_scenarios.py
-```
-
-This executes eight synthetic scenarios against the actual `detect_alerts()` function and writes the results to `reports/dlp_scenario_validation.csv`.
-
-A failed scenario causes the script to exit with a non-zero status, allowing the CI workflow to detect the failure.
-
-**Note:** Running the event generator again overwrites the existing synthetic dataset. Generated records are fictional.
-
-## Detection Scenario Validation
-
-The scenario validator covers eight executable scenarios.
-
-| Scenario | Expected behaviour |
-|---|---|
-| Sensitive data to an unapproved destination | DLP-001, High |
-| Sensitive external file sharing | DLP-002, High |
-| Bulk download of 100 files | DLP-003, Medium |
-| Bulk download of 99 files | No alert from DLP-003 |
-| Sensitive upload to unapproved cloud | DLP-004, High |
-| Internal upload to unapproved cloud | DLP-004, Medium |
-| Unapproved USB transfer | DLP-005, Medium |
-| Approved public USB transfer | No alert from DLP-005 |
-
-The scenarios validate selected rule conditions and severity assignments. Some events can trigger more than one rule, and the validator accounts for the expected rule being present.
-
-Invalid destination-approval input is tested separately in the unit test suite.
-
-## Automated Testing
-
-DLP Sentinel includes 14 unit tests implemented using Python's built-in `unittest` framework.
-
-### DLP detection tests
-
-Nine tests cover:
-
-- Sensitive data sent to an unapproved destination
-- Sensitive external sharing
-- Bulk-download threshold behaviour at 100 files
-- Non-triggering behaviour below the threshold
-- High severity for sensitive cloud uploads
-- Medium severity for internal cloud uploads
-- Unapproved USB transfer
-- Approved USB activity handling
-- Rejection of invalid destination-approval values
-
-Run:
-
-```powershell
-python -m unittest -v test_detect_alerts.py
-```
-
-### SLA calculation tests
-
-Five tests cover:
-
-- Review completed within the SLA target
-- Review completed after the SLA target
-- Review exactly at the SLA boundary
-- Rejection of a review timestamp before incident creation
-- Rejection of a zero SLA target
-
-Run:
-
-```powershell
-python -m unittest -v test_calculate_sla.py
-```
-
-### Run both test suites
-
-```powershell
+```bash
 python -m unittest -v test_detect_alerts.py test_calculate_sla.py
 ```
 
-The expected result is 14 passing tests when the current implementation remains unchanged.
+The current test suite contains 14 unit tests covering detection rules, threshold boundaries, approval validation, severity assignment, and SLA calculations.
 
-### Run scenario validation
+## Validation Evidence
 
-```powershell
-python validate_scenarios.py
-```
+The latest local validation run produced the following results:
 
-The previously observed validation result was eight scenarios passed and zero failed.
+| Validation | Result |
+|---|---|
+| Detection and SLA unit tests | 14 passed |
+| Executable DLP scenarios | 8 passed, 0 failed |
+| Illustrative incident records analysed | 5 |
+| SLA targets met | 3 |
+| SLA targets breached | 2 |
 
-Re-run the commands after modifying the detection logic, test cases, or validation scenarios.
+These results come from the project's synthetic test data. They are not production detection rates, false-positive rates, or real-world SOC performance metrics.
 
-## Continuous Integration with GitHub Actions
+### Observed Detection Results
 
-The workflow is defined in `.github/workflows/tests.yml`.
-
-It runs on pushes and pull requests targeting `main`, and supports manual execution through the GitHub Actions interface.
-
-The workflow:
-
-1. Checks out the repository.
-2. Sets up Python 3.10.
-3. Installs dependencies from `requirements.txt`.
-4. Runs the DLP detection unit tests.
-5. Runs the SLA calculation unit tests.
-6. Executes DLP scenario validation.
-
-The repository has had three successful workflow runs during development. Workflow status can be viewed on the [GitHub Actions page](https://github.com/namitharaveendran/dlp-sentinel-investigation-lab/actions).
-
-## Observed Results
-
-The initial synthetic dataset run produced these results.
+The initial synthetic dataset run produced the following results:
 
 | Metric | Observed result |
 |---|---:|
@@ -271,7 +201,7 @@ The initial synthetic dataset run produced these results.
 | Medium-severity alert records | 12 |
 | Unique events selected for initial investigation | 5 |
 
-### Alert records by rule
+**Alert records by rule:**
 
 | Rule ID | Alert records |
 |---|---:|
@@ -281,9 +211,28 @@ The initial synthetic dataset run produced these results.
 | DLP-004 | 6 |
 | DLP-005 | 3 |
 
-These figures are observed results from the initial synthetic dataset, not benchmarks of real-world detection performance. Alert records can exceed unique events because one event can trigger multiple rules.
+These are observed results from the initial synthetic dataset, not benchmarks of real-world detection performance. Alert records can exceed unique events because one event can trigger multiple rules.
 
-## Incident Management and Investigation
+Re-run the validation commands after modifying the detection logic, test cases, or scenario validator.
+
+## Automated Testing and GitHub Actions
+
+The workflow is defined in `.github/workflows/tests.yml`.
+
+It runs on pushes and pull requests targeting `main`, and supports manual execution through GitHub Actions.
+
+The workflow:
+
+1. Checks out the repository.
+2. Sets up Python 3.10.
+3. Installs dependencies from `requirements.txt`.
+4. Runs the DLP detection unit tests.
+5. Runs the SLA calculation unit tests.
+6. Executes DLP scenario validation.
+
+View current workflow results on the [GitHub Actions page](https://github.com/namitharaveendran/dlp-sentinel-investigation-lab/actions).
+
+## Incident Investigation and SLA Tracking
 
 The incident register is stored at `reports/incident_register.csv`.
 
@@ -296,9 +245,9 @@ It contains five illustrative incident records with fields for:
 - Analyst action and escalation reason
 - Disposition and evidence limitations
 
-The sample records demonstrate how a DLP analyst can document review and escalation decisions.
+The sample records demonstrate how an analyst can document review and escalation decisions.
 
-All example dispositions remain `Inconclusive` because the dataset does not independently establish authorization, actual data transfer, or data exposure.
+All example dispositions remain **Inconclusive** because the dataset does not independently establish authorization, actual data transfer, or data exposure.
 
 A suspicious alert should not automatically be treated as a confirmed incident. A real investigation would require appropriate identity, access, approval, endpoint, cloud, or network evidence.
 
@@ -308,13 +257,13 @@ The SLA calculation module compares the elapsed time between incident creation a
 
 Run:
 
-```powershell
+```bash
 python calculate_sla.py
 ```
 
 The output is saved to `reports/sla_results.csv`.
 
-For the current illustrative sample, the expected results are:
+For the current illustrative sample:
 
 | Metric | Result |
 |---|---:|
@@ -322,24 +271,15 @@ For the current illustrative sample, the expected results are:
 | Review targets met | 3 |
 | Review targets breached | 2 |
 
-These are simulated results based on manually supplied example timestamps and review targets. They do not represent real operational performance, company SLAs, or compliance with an external standard.
+These are simulated results based on example timestamps and review targets. They do not represent actual operational performance, company SLAs, or compliance with an external standard.
 
-## Enterprise DLP Learning
+## Enterprise DLP Concept Mapping
 
-The project uses custom Python rules and does not integrate with Microsoft Purview or another production DLP platform.
+The [Enterprise DLP Concept Mapping](docs/enterprise-dlp-concept-mapping.md) document maps the lab's custom rules to general enterprise DLP concepts. It covers policy-design considerations, analyst validation, investigation principles, and project limitations.
 
-Enterprise DLP concepts that can be studied alongside this lab include:
+For further study, see [Microsoft Learn — Learn about Data Loss Prevention](https://learn.microsoft.com/en-us/purview/dlp-learn-about-dlp).
 
-- Sensitive information identification
-- Policy conditions and exceptions
-- Data movement restrictions
-- Alert review and investigation
-- User notifications and escalation
-- False-positive analysis
-
-For introductory material, refer to [Microsoft Learn — Data Loss Prevention](https://learn.microsoft.com/en-us/purview/dlp-learn-about-dlp).
-
-Studying these concepts does not constitute hands-on experience with the enterprise platform. Any future platform practice should be documented separately and accurately.
+Studying enterprise DLP concepts does not constitute hands-on administration of Microsoft Purview or another enterprise DLP platform.
 
 ## Limitations
 
@@ -361,9 +301,20 @@ Studying these concepts does not constitute hands-on experience with the enterpr
 - Add scenario checks for all detection-rule interactions.
 - Generate richer investigation evidence and audit fields.
 - Add automated validation for incident-register data.
-- Explore authorised hands-on practice with enterprise DLP tooling.
-- Improve reporting and visualisation of alerts and review metrics.
+- Explore authorized hands-on practice with enterprise DLP tooling.
+- Improve reporting and visualization of alerts and review metrics.
+
+## Skills Demonstrated
+
+Python automation, pandas data processing, rule-based detection, DLP concepts, security alert triage, incident investigation documentation, SLA calculation, unit testing, scenario validation, Git, GitHub, and CI automation.
 
 ## Disclaimer
 
 DLP Sentinel is an educational and defensive cybersecurity project. It uses fictional data and does not monitor real employees, access actual confidential information, or connect to production systems.
+
+## Author
+
+**Namitha Raveendran**
+
+- [GitHub](https://github.com/namitharaveendran)
+- [LinkedIn](https://www.linkedin.com/in/namitha-raveendran-0464692a4)
