@@ -1,0 +1,9 @@
+scenario_id,test_case,expected_rule,actual_rules,expected_severity,actual_severities,pass_fail
+SC-001,Sensitive data to unapproved destination,DLP-001,DLP-001;DLP-004,High,High,PASS
+SC-002,Sensitive external file sharing,DLP-002,DLP-002,High,High,PASS
+SC-003,Bulk download of 100 files,DLP-003,DLP-003,Medium,Medium,PASS
+SC-004,Bulk download of 99 files,None,None,None,None,PASS
+SC-005,Sensitive upload to unapproved cloud,DLP-004,DLP-001;DLP-004,High,High,PASS
+SC-006,Internal upload to unapproved cloud,DLP-004,DLP-004,Medium,Medium,PASS
+SC-007,Unapproved USB transfer,DLP-005,DLP-005,Medium,Medium,PASS
+SC-008,Approved public USB transfer,None,None,None,None,PASS

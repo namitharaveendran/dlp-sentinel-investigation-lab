@@ -31,3 +31,6 @@ jobs:
 
       - name: Run SLA calculation tests
         run: python -m unittest -v test_calculate_sla.py
+
+      - name: Validate DLP scenarios
+        run: python validate_scenarios.py
