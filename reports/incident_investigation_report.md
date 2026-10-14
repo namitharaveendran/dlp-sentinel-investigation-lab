@@ -1,4 +1,4 @@
-# DLP Sentinel — Incident Investigation Report
+﻿# DLP Sentinel â€” Incident Investigation Report
 
 ## 1. Project Overview
 
@@ -15,11 +15,11 @@ The objective is to identify potentially risky data-handling activities, assign 
 
 ## 3. Detection Rules
 
-- **DLP-001:** Confidential or Restricted data sent to an unapproved destination — High severity.
-- **DLP-002:** External sharing involving Confidential or Restricted information — High severity.
-- **DLP-003:** Bulk downloads involving at least 100 files — Medium severity.
-- **DLP-004:** Cloud uploads to the configured `unapproved_cloud` destination — High severity for Confidential or Restricted data; otherwise Medium severity.
-- **DLP-005:** Copying files to a `usb_drive` destination without approval — Medium severity.
+- **DLP-001:** Confidential or Restricted data sent to an unapproved destination â€” High severity.
+- **DLP-002:** External sharing involving Confidential or Restricted information â€” High severity.
+- **DLP-003:** Bulk downloads involving at least 100 files â€” Medium severity.
+- **DLP-004:** Cloud uploads to the configured `unapproved_cloud` destination â€” High severity for Confidential or Restricted data; otherwise Medium severity.
+- **DLP-005:** Copying files to a `usb_drive` destination without approval â€” Medium severity.
 
 These rules use predefined conditions and severity assignments. An alert indicates activity requiring review; it does not, by itself, establish a confirmed data leak or malicious intent.
 
