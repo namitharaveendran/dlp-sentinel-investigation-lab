@@ -26,6 +26,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run automated unit tests
-        run: |
-          python -m unittest -v test_detect_alerts.py
+      - name: Run DLP detection tests
+        run: python -m unittest -v test_detect_alerts.py
+
+      - name: Run SLA calculation tests
+        run: python -m unittest -v test_calculate_sla.py

@@ -1,0 +1,7 @@
+
+incident_id,event_id,priority,created_at,first_review_at,sla_target_minutes,status,analyst_action,escalation_reason,disposition,closure_evidence
+INC-001,DLP-001,High,2026-10-14T09:00:00,2026-10-14T09:08:00,15,Under Review,"Check destination approval and business justification","Escalate if sensitive data transfer remains unauthorized",Inconclusive,"Synthetic event; independent evidence unavailable"
+INC-002,DLP-002,Medium,2026-10-14T09:00:00,2026-10-14T09:45:00,60,Under Review,"Review bulk-download volume and stated purpose","Escalate if activity cannot be justified",Inconclusive,"Synthetic event; authorization not independently verified"
+INC-003,DLP-003,High,2026-10-14T09:00:00,2026-10-14T09:20:00,15,Escalated,"Review sensitive cloud upload and destination","Unapproved cloud destination requires further validation",Inconclusive,"Synthetic event; transfer and exposure not independently verified"
+INC-004,DLP-004,Medium,2026-10-14T09:00:00,2026-10-14T09:30:00,60,Under Review,"Review removable-media destination and approval","Escalate if transfer lacks authorization",Inconclusive,"Synthetic event; independent evidence unavailable"
+INC-005,DLP-007,High,2026-10-14T09:00:00,2026-10-14T09:25:00,15,Escalated,"Review bulk-download volume and business justification","High-volume restricted-data activity needs further investigation",Inconclusive,"Synthetic event; business justification and authorization not independently verified"
