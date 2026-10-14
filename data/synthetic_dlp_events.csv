@@ -1,0 +1,31 @@
+event_id,timestamp,user_id,activity,file_name,sensitivity,destination,destination_approved,files_count,business_justification
+DLP-001,2026-10-12T09:00:00,EMP-101,external_file_share,customer_records.xlsx,Confidential,external_email,False,1,Not provided
+DLP-002,2026-10-12T09:15:00,EMP-102,bulk_download,employee_data.csv,Restricted,corporate_device,True,250,Routine reporting claimed
+DLP-003,2026-10-12T09:30:00,EMP-103,cloud_upload,financial_forecast.xlsx,Confidential,unapproved_cloud,False,12,Not provided
+DLP-004,2026-10-12T09:45:00,EMP-104,removable_media_copy,project_documents.zip,Internal,usb_drive,False,8,Not provided
+DLP-005,2026-10-12T10:00:00,EMP-105,external_file_share,public_brochure.pdf,Public,approved_partner,True,1,Approved marketing activity
+DLP-006,2026-10-12T10:15:00,EMP-106,cloud_upload,team_notes.docx,Internal,approved_cloud,True,2,Approved team collaboration
+DLP-007,2026-10-12T10:30:00,EMP-107,bulk_download,transaction_history.csv,Restricted,corporate_device,True,180,Not provided
+DLP-008,2026-10-12T10:45:00,EMP-101,removable_media_copy,training_material.pdf,Public,usb_drive,True,3,Approved training transfer
+DLP-009,2026-10-12T11:00:00,EMP-102,external_file_share,payroll_summary.xlsx,Restricted,external_email,False,1,Urgent request; not verified
+DLP-010,2026-10-12T11:15:00,EMP-103,cloud_upload,internal_project_plan.docx,Internal,unapproved_cloud,False,5,Personal backup
+DLP-011,2026-10-12T11:30:00,EMP-104,external_file_share,customer_records.xlsx,Confidential,external_email,False,1,Not provided
+DLP-012,2026-10-12T11:45:00,EMP-105,bulk_download,employee_data.csv,Restricted,corporate_device,True,250,Routine reporting claimed
+DLP-013,2026-10-12T12:00:00,EMP-106,cloud_upload,financial_forecast.xlsx,Confidential,unapproved_cloud,False,12,Not provided
+DLP-014,2026-10-12T12:15:00,EMP-107,removable_media_copy,project_documents.zip,Internal,usb_drive,False,8,Not provided
+DLP-015,2026-10-12T12:30:00,EMP-101,external_file_share,public_brochure.pdf,Public,approved_partner,True,1,Approved marketing activity
+DLP-016,2026-10-12T12:45:00,EMP-102,cloud_upload,team_notes.docx,Internal,approved_cloud,True,2,Approved team collaboration
+DLP-017,2026-10-12T13:00:00,EMP-103,bulk_download,transaction_history.csv,Restricted,corporate_device,True,180,Not provided
+DLP-018,2026-10-12T13:15:00,EMP-104,removable_media_copy,training_material.pdf,Public,usb_drive,True,3,Approved training transfer
+DLP-019,2026-10-12T13:30:00,EMP-105,external_file_share,payroll_summary.xlsx,Restricted,external_email,False,1,Urgent request; not verified
+DLP-020,2026-10-12T13:45:00,EMP-106,cloud_upload,internal_project_plan.docx,Internal,unapproved_cloud,False,5,Personal backup
+DLP-021,2026-10-12T14:00:00,EMP-107,external_file_share,customer_records.xlsx,Confidential,external_email,False,1,Not provided
+DLP-022,2026-10-12T14:15:00,EMP-101,bulk_download,employee_data.csv,Restricted,corporate_device,True,250,Routine reporting claimed
+DLP-023,2026-10-12T14:30:00,EMP-102,cloud_upload,financial_forecast.xlsx,Confidential,unapproved_cloud,False,12,Not provided
+DLP-024,2026-10-12T14:45:00,EMP-103,removable_media_copy,project_documents.zip,Internal,usb_drive,False,8,Not provided
+DLP-025,2026-10-12T15:00:00,EMP-104,external_file_share,public_brochure.pdf,Public,approved_partner,True,1,Approved marketing activity
+DLP-026,2026-10-12T15:15:00,EMP-105,cloud_upload,team_notes.docx,Internal,approved_cloud,True,2,Approved team collaboration
+DLP-027,2026-10-12T15:30:00,EMP-106,bulk_download,transaction_history.csv,Restricted,corporate_device,True,180,Not provided
+DLP-028,2026-10-12T15:45:00,EMP-107,removable_media_copy,training_material.pdf,Public,usb_drive,True,3,Approved training transfer
+DLP-029,2026-10-12T16:00:00,EMP-101,external_file_share,payroll_summary.xlsx,Restricted,external_email,False,1,Urgent request; not verified
+DLP-030,2026-10-12T16:15:00,EMP-102,cloud_upload,internal_project_plan.docx,Internal,unapproved_cloud,False,5,Personal backup
