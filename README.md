@@ -253,7 +253,7 @@ A suspicious alert should not automatically be treated as a confirmed incident. 
 
 ## Simulated SLA Monitoring
 
-The SLA calculation module compares the elapsed time between incident creation and first review with a configured target.
+The SLA calculation module compares the elapsed time between incident creation and first review against an illustrative review-time target.
 
 Run:
 
